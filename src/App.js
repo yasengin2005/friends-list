@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
-function App() {
+const App = () => <PersonList />;
+
+const PersonList = () => {
+  const people = [
+    {
+      img: 22,
+      name: "John",
+      job: "Developer",
+    },
+    {
+      img: 23,
+      name: "Jack",
+      job: "Designer",
+    },
+    {
+      img: 24,
+      name: "David",
+      job: "Boss",
+    },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <section>
+      <Person person={people[0]} />;
+      <Person person={people[1]}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex labore molestias incidunt reiciendis blanditiis enim.
+      </Person>
+      <Person person={people[2]} />;
+    </section>
+  );
+};
+
+const Person = (props) => {
+  const { img, name, job } = props.person;
+  const { children } = props;
+  const url = `https://randomuser.me/api/portraits/thumb/men/${img}.jpg`;
+  return (
+    <div className="person">
+      <img src={url} alt="random_user_generator" />
+      <div>
+        <h4>{name}</h4>
+        <h4>{job}</h4>
+        {children}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
